@@ -287,39 +287,21 @@ pre {
 
 /* Images */
 
-/* Images (nice on desktop + not massive on phones) */
-.prose .image-container{
+.image-container{
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
-  margin: 18px 0;
-  align-items: start;
 }
 
-/* Keep them responsive and clean */
-.prose .image-container > img{
+.image-container img{
   width: 100%;
   height: auto;
   display: block;
-  border-radius: var(--radius);
 }
 
-/* Mobile: stack + don't let them get comically large */
+/* mobile */
 @media (max-width: 640px){
-  .prose .image-container{
+  .image-container{
     grid-template-columns: 1fr;
-    justify-items: center;         /* centers the image */
   }
-
-  .prose .image-container > img{
-    width: min(100%, 420px);       /* <= key fix: caps width on phones */
-  }
-}
-
-.prose .image-container > img{
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  display: block;
-  border-radius: var(--radius);
 }
