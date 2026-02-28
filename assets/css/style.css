@@ -287,32 +287,33 @@ pre {
 
 /* Images */
 
-/* two-up on larger screens, stacks nicely on mobile */
-.image-container{
+/* Make ALL images responsive by default */
+.prose img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Two-up on desktop, stack on mobile */
+.prose .image-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  align-items: flex-start;
-  justify-content: center;
   margin: 20px 0;
+  align-items: flex-start;
 }
 
-/* IMPORTANT: use flex-basis instead of width:50% so it can shrink */
-.image-container > img{
-  display: block;
-  width: 100%;
+/* Flexible columns that wrap nicely inside your 720px container */
+.prose .image-container > img {
+  flex: 1 1 calc(50% - 10px);
+  min-width: 0;          /* prevents weird overflow in flex layouts */
   height: auto;
-  flex: 1 1 320px;     /* grows, shrinks, minimum-ish column size */
-  max-width: 400px;    /* keeps them from getting huge on wide screens */
+  display: block;
+  border-radius: 10px;   /* optional */
 }
 
-/* stack on small screens */
-@media (max-width: 768px){
-  .image-container{
-    flex-direction: column;
-    align-items: center;
-  }
-  .image-container > img{
-    max-width: 500px;  /* optional: adjust */
+/* Stack on small screens */
+@media (max-width: 768px) {
+  .prose .image-container > img {
+    flex-basis: 100%;
   }
 }
