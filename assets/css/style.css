@@ -287,20 +287,23 @@ pre {
 
 /* Images */
 
+/* --- Image grid: desktop --- */
 .image-container{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+  margin: 18px 0;
 }
 
 .image-container img{
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
+  max-width: 100%;
+  border-radius: var(--radius);
 }
 
-/* mobile */
-
+/* --- Image grid: mobile (FORCE) --- */
 @media (max-width: 640px){
   .image-container{
     grid-template-columns: 1fr;
@@ -308,7 +311,9 @@ pre {
   }
 
   .image-container img{
-    width: min(92vw, 320px);  /* smaller cap = not huge */
+    width: min(92vw, 320px);
+    max-width: min(92vw, 320px);
     height: auto;
+    max-height: 60vh;
   }
 }
