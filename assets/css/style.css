@@ -300,8 +300,13 @@ pre {
 }
 
 /* mobile */
+
 @media (max-width: 640px){
   .image-container{
     grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .image-container img{
+    width: min(100%, 420px);
   }
 }
