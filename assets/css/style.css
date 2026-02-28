@@ -284,3 +284,25 @@ pre {
   clip: rect(1px, 1px, 1px, 1px);
   white-space: nowrap;
 }
+
+/* Images */
+
+.image-container {
+  display: flex;
+  gap: 20px;
+}
+
+.image-container img {
+  width: 50%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .image-container {
+    flex-direction: column;
+  }
+
+  .image-container img {
+    width: 100%;
+  }
+}
