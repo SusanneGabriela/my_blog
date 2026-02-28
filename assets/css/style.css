@@ -306,7 +306,9 @@ pre {
     grid-template-columns: 1fr;
     justify-items: center;
   }
+
   .image-container img{
-    width: min(100%, 420px);
+    width: min(92vw, 320px);  /* smaller cap = not huge */
+    height: auto;
   }
 }
