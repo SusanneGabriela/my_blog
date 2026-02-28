@@ -287,33 +287,39 @@ pre {
 
 /* Images */
 
-/* Make ALL images responsive by default */
-.prose img {
-  max-width: 100%;
-  height: auto;
+/* Images (nice on desktop + not massive on phones) */
+.prose .image-container{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 18px 0;
+  align-items: start;
 }
 
-/* Two-up on desktop, stack on mobile */
-.prose .image-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin: 20px 0;
-  align-items: flex-start;
-}
-
-/* Flexible columns that wrap nicely inside your 720px container */
-.prose .image-container > img {
-  flex: 1 1 calc(50% - 10px);
-  min-width: 0;          /* prevents weird overflow in flex layouts */
+/* Keep them responsive and clean */
+.prose .image-container > img{
+  width: 100%;
   height: auto;
   display: block;
-  border-radius: 10px;   /* optional */
+  border-radius: var(--radius);
 }
 
-/* Stack on small screens */
-@media (max-width: 768px) {
-  .prose .image-container > img {
-    flex-basis: 100%;
+/* Mobile: stack + don't let them get comically large */
+@media (max-width: 640px){
+  .prose .image-container{
+    grid-template-columns: 1fr;
+    justify-items: center;         /* centers the image */
   }
+
+  .prose .image-container > img{
+    width: min(100%, 420px);       /* <= key fix: caps width on phones */
+  }
+}
+
+.prose .image-container > img{
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius);
 }
